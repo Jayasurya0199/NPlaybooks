@@ -1,0 +1,11 @@
+---
+- name: creating multiple user
+  hosts: all
+  become: true
+  tasks:
+  - name: create user
+    user: name='{{ item }}' state=present
+    with_items:
+      - Ktm
+      - Yamaha
+      - Bajaj

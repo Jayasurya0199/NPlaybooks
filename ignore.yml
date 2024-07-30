@@ -1,0 +1,17 @@
+---
+- name: error handling
+  hosts: all
+  become: true
+  tasks:
+  - name: install httpd
+    yum:
+      name: httpd
+      state: present
+    when: ansible_os_family == "RedHat"
+  - name: ignore
+    service: 
+      name: http--
+      state: started
+    when: ansible_os_family == "RedHat"
+    ignore_errors: yes  
+ 

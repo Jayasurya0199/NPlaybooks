@@ -1,0 +1,13 @@
+---
+- name: install httpd & start service
+  yum:
+    name: httpd
+    state: present
+  when: ansible_os_family == "RedHat"
+  notify: start httpd service
+- name: copy  a file
+  copy:
+    src: /home/ansadmin/index.html
+    dest: /var/www/html
+    mode: 0777
+

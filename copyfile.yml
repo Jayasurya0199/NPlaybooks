@@ -1,0 +1,12 @@
+---
+- name: copying a file using playbook
+  hosts: all
+  become: true
+  tasks:
+  - name: copy a index file to dest
+    copy:
+      src: /home/ansadmin/index.html
+      dest: /home/ansadmin/
+      mode: 0600
+      owner: kaith
+
